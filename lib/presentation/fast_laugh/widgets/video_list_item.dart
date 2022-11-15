@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_bloc/core/colors/colors.dart';
-import 'package:netflix_clone_bloc/core/colors/constants.dart';
 
 class VideoListItem extends StatelessWidget {
   final int index;
@@ -100,7 +99,7 @@ class VideoActionsWidget extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: kWhiteColor,
               fontSize: 16,
             ),
