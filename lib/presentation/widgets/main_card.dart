@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_bloc/core/colors/constants.dart';
+import 'package:netflix_clone_bloc/core/constants.dart';
 
 class MainCard extends StatelessWidget {
   const MainCard({

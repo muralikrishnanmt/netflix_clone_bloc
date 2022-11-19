@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:netflix_clone_bloc/core/colors/constants.dart';
+import 'package:netflix_clone_bloc/core/constants.dart';
 import 'package:netflix_clone_bloc/presentation/home/widgets/background_card.dart';
 import 'package:netflix_clone_bloc/presentation/home/widgets/number_title_card.dart';
 import 'package:netflix_clone_bloc/presentation/widgets/main_title_card.dart';

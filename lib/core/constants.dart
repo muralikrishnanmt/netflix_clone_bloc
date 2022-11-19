@@ -22,3 +22,5 @@ const newAndHotTempImage =
     'https://c4.wallpaperflare.com/wallpaper/738/614/349/minions-wallpaper-preview.jpg';
 const newAndHotTempImage2 =
     'https://i.ytimg.com/vi/t06RUxPbp_c/maxresdefault.jpg';
+
+const imageAppendUrl = 'https://image.tmdb.org/t/p/w500';

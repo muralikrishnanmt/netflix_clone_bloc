@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_bloc/core/colors/colors.dart';
-import 'package:netflix_clone_bloc/core/colors/constants.dart';
+import 'package:netflix_clone_bloc/core/colors.dart';
+import 'package:netflix_clone_bloc/core/constants.dart';
 import 'package:netflix_clone_bloc/presentation/new_and_hot/widgets/coming_soon_widget.dart';
 import 'package:netflix_clone_bloc/presentation/new_and_hot/widgets/everyones_watching_widgets.dart';
 

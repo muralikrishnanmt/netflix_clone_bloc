@@ -1,7 +1,7 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_bloc/core/colors/colors.dart';
-import 'package:netflix_clone_bloc/core/colors/constants.dart';
+import 'package:netflix_clone_bloc/core/colors.dart';
+import 'package:netflix_clone_bloc/core/constants.dart';
 
 class NumberCard extends StatelessWidget {
   final int index;

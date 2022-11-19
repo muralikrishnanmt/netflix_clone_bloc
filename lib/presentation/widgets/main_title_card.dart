@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_bloc/core/colors/constants.dart';
+import 'package:netflix_clone_bloc/core/constants.dart';
 import 'package:netflix_clone_bloc/presentation/widgets/main_card.dart';
 import 'package:netflix_clone_bloc/presentation/widgets/main_title.dart';
 

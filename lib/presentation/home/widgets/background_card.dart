@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_bloc/core/colors/colors.dart';
-import 'package:netflix_clone_bloc/core/colors/constants.dart';
+import 'package:netflix_clone_bloc/core/colors.dart';
+import 'package:netflix_clone_bloc/core/constants.dart';
 import 'package:netflix_clone_bloc/presentation/home/widgets/custom_button_widget.dart';
 
 class BackgroundCard extends StatelessWidget {
