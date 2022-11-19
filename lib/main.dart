@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone_bloc/application/downloads/downloads_bloc.dart';
+import 'package:netflix_clone_bloc/application/search/search_bloc.dart';
 import 'package:netflix_clone_bloc/core/colors.dart';
 import 'package:netflix_clone_bloc/domain/core/di/injectable.dart';
 import 'package:netflix_clone_bloc/presentation/main_page/screen_main_page.dart';
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (ctx) => getIt<DownloadsBloc>(),
-        )
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<SearchBloc>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -50,7 +54,7 @@ class MyApp extends StatelessWidget {
 }
 
 
-
+//flutter pub run build_runner watch --delete-conflicting-outputs
 
 // API Key (v3 auth)
 // edc84c42a8513dba0dd4cddb9e550c3d
