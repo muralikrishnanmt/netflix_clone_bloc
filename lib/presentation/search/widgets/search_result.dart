@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone_bloc/application/search/search_bloc.dart';
 import 'package:netflix_clone_bloc/core/constants.dart';
 import 'package:netflix_clone_bloc/presentation/search/widgets/title.dart';
 
-const imageUrl =
-    'https://www.themoviedb.org/t/p/original/sBp9UD2CdpkSo9E0uDTPUq4aelF.jpg';
+// const imageUrl =
+//     'https://www.themoviedb.org/t/p/original/sBp9UD2CdpkSo9E0uDTPUq4aelF.jpg';
 
 class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({super.key});
@@ -18,18 +20,24 @@ class SearchResultWidget extends StatelessWidget {
         ),
         kHeight,
         Expanded(
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 5,
-            childAspectRatio: 1 / 1.4,
-            children: List.generate(
-              20,
-              (index) {
-                return const MainCard();
-              },
-            ),
+          child: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              return GridView.builder(
+                itemCount: state.searchResultList.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 5,
+                  childAspectRatio: 1 / 1.4,
+                ),
+                itemBuilder: (context, index) {
+                  final movie = state.searchResultList[index];
+                  return MainCard(
+                    imageUrl: movie.posterPath!,
+                  );
+                },
+              );
+            },
           ),
         ),
       ],
@@ -38,15 +46,19 @@ class SearchResultWidget extends StatelessWidget {
 }
 
 class MainCard extends StatelessWidget {
-  const MainCard({super.key});
+  final String imageUrl;
+  const MainCard({
+    super.key,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        image: const DecorationImage(
+        image: DecorationImage(
           image: NetworkImage(
-            imageUrl,
+            '$imageAppendUrl/$imageUrl',
           ),
           fit: BoxFit.cover,
         ),

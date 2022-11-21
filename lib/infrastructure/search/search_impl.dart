@@ -14,12 +14,13 @@ class SearchImpl implements SearchService {
   Future<Either<MainFailure, SearchResp>> searchMovies(
       {required String movieQuery}) async {
     try {
-      final Response response = await Dio(BaseOptions()).get(
+      final response = await Dio(BaseOptions()).get(
         APIEndPoints.search,
         queryParameters: {
           'query': movieQuery,
         },
       );
+      log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = SearchResp.fromJson(response.data);
         return Right(result);
