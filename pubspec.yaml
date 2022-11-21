@@ -47,6 +47,7 @@ dependencies:
   dartz: ^0.10.1
   get_it: ^7.2.0
   injectable: ^1.5.4
+  share_plus: ^6.3.0
 
 dev_dependencies:
   flutter_test:

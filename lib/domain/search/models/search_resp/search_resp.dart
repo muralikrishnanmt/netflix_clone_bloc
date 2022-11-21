@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:json_annotation/json_annotation.dart';
-import 'package:netflix_clone_bloc/core/constants.dart';
 
 part 'search_resp.g.dart';
 

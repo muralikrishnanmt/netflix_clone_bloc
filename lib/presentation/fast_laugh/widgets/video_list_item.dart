@@ -1,5 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_bloc/core/colors.dart';
+import 'package:netflix_clone_bloc/core/constants.dart';
+import 'package:netflix_clone_bloc/domain/downloads/models/downloads.dart';
+
+class VideoListItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final Downloads movieData;
+
+  const VideoListItemInheritedWidget({
+    super.key,
+    required this.widget,
+    required this.movieData,
+  }) : super(child: widget);
+
+  @override
+  bool updateShouldNotify(covariant VideoListItemInheritedWidget oldWidget) {
+    return oldWidget.movieData != movieData;
+  }
+
+  static VideoListItemInheritedWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<VideoListItemInheritedWidget>();
+  }
+}
 
 class VideoListItem extends StatelessWidget {
   final int index;
@@ -7,6 +30,8 @@ class VideoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final posterPath =
+        VideoListItemInheritedWidget.of(context)!.movieData.posterPath;
     return Stack(
       children: [
         Container(
@@ -39,30 +64,31 @@ class VideoListItem extends StatelessWidget {
                 //right side
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 10,
                       ),
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundImage: NetworkImage(
-                            'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'),
+                        backgroundImage: posterPath == null
+                            ? null
+                            : NetworkImage('$imageAppendUrl$posterPath'),
                       ),
                     ),
-                    VideoActionsWidget(
+                    const VideoActionsWidget(
                       icon: Icons.emoji_emotions,
                       title: 'LOL',
                     ),
-                    VideoActionsWidget(
+                    const VideoActionsWidget(
                       icon: Icons.add,
                       title: 'My List',
                     ),
-                    VideoActionsWidget(
+                    const VideoActionsWidget(
                       icon: Icons.share,
                       title: 'Share',
                     ),
-                    VideoActionsWidget(
+                    const VideoActionsWidget(
                       icon: Icons.play_arrow,
                       title: 'Play',
                     ),

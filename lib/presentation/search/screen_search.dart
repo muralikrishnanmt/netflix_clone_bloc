@@ -57,16 +57,13 @@ class ScreenSearch extends StatelessWidget {
                 child: BlocBuilder<SearchBloc, SearchState>(
                   builder: (context, state) {
                     if (state.searchResultList.isEmpty) {
-                      return SearchIdleWidget();
+                      return const SearchIdleWidget();
                     } else {
-                      return SearchResultWidget();
+                      return const SearchResultWidget();
                     }
                   },
                 ),
               ),
-              // const Expanded(
-              //   child: SearchResultWidget(),
-              // ),
             ],
           ),
         ),
