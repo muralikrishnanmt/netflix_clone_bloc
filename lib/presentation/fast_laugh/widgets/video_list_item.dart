@@ -81,9 +81,44 @@ class VideoListItem extends StatelessWidget {
                             : NetworkImage('$imageAppendUrl$posterPath'),
                       ),
                     ),
-                    const VideoActionsWidget(
-                      icon: Icons.emoji_emotions,
-                      title: 'LOL',
+                    ValueListenableBuilder(
+                      valueListenable: likedVideosIdsNotifier,
+                      builder: (BuildContext c, Set<int> newLikedListIds,
+                          Widget? _) {
+                        final _index = index;
+                        if (newLikedListIds.contains(_index)) {
+                          return GestureDetector(
+                            onTap: () {
+                              // BlocProvider.of<FastLaughBloc>(context).add(
+                              //   UnlikeVideo(
+                              //     id: _index,
+                              //   ),
+                              // );
+                              likedVideosIdsNotifier.value.remove(_index);
+                              likedVideosIdsNotifier.notifyListeners();
+                            },
+                            child: const VideoActionsWidget(
+                              icon: Icons.favorite_outline,
+                              title: 'Liked',
+                            ),
+                          );
+                        }
+                        return GestureDetector(
+                          onTap: () {
+                            // BlocProvider.of<FastLaughBloc>(context).add(
+                            //   LikeVideo(
+                            //     id: _index,
+                            //   ),
+                            // );
+                            likedVideosIdsNotifier.value.add(_index);
+                            likedVideosIdsNotifier.notifyListeners();
+                          },
+                          child: const VideoActionsWidget(
+                            icon: Icons.emoji_emotions,
+                            title: 'LOL',
+                          ),
+                        );
+                      },
                     ),
                     const VideoActionsWidget(
                       icon: Icons.add,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -24,6 +25,8 @@ final dummyVideoUrls = [
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
 ];
 
+ValueNotifier<Set<int>> likedVideosIdsNotifier = ValueNotifier({});
+
 @injectable
 class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
   FastLaughBloc(
@@ -40,7 +43,7 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
       final _result = await _downloadService.getDownloadsImage();
       final _state = _result.fold(
         (l) {
-          return const FastLaughState(
+          return FastLaughState(
             videosList: [],
             isLoading: false,
             isError: true,
@@ -54,6 +57,14 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
       );
       //send to ui
       emit(_state);
+    });
+
+    on<LikeVideo>((event, emit) async {
+      likedVideosIdsNotifier.value.add(event.id);
+    });
+
+    on<UnlikeVideo>((event, emit) async {
+      likedVideosIdsNotifier.value.remove(event.id);
     });
   }
 }
