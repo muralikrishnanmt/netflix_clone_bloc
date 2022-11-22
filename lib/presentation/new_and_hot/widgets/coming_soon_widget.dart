@@ -4,8 +4,20 @@ import 'package:netflix_clone_bloc/presentation/home/widgets/custom_button_widge
 import 'package:netflix_clone_bloc/presentation/widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String description;
   const ComingSoonWidget({
     Key? key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -19,17 +31,17 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            children: const [
+            children: [
               Text(
-                'FEB',
-                style: TextStyle(
+                month,
+                style: const TextStyle(
                   fontSize: 16,
                   color: kGreyColor,
                 ),
               ),
               Text(
-                '11',
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                   fontSize: 30,
                   letterSpacing: 4,
                   fontWeight: FontWeight.bold,
@@ -44,19 +56,24 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VideoWidget(),
+              VideoWidget(
+                url: posterPath,
+              ),
               Row(
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'TALL GIRL 2',
-                    style: TextStyle(
-                      fontSize: 35,
-                      letterSpacing: -5,
-                      fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Text(
+                      movieName,
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        //letterSpacing: -5,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  const Spacer(),
                   Row(
                     children: const [
                       CustomButtonWidget(
@@ -78,19 +95,22 @@ class ComingSoonWidget extends StatelessWidget {
                 ],
               ),
               kHeight,
-              const Text(
-                'Coming on Friday',
+              Text(
+                'Coming on $day $month',
               ),
-              const Text(
-                'Tall Girl 2',
-                style: TextStyle(
+              Text(
+                movieName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(
-                'Landing the lead in the school musical is a dream come true for Jodi, until the pressure sends her confidence - and her relationship - into a tailspin',
-                style: TextStyle(
+              Text(
+                description,
+                maxLines: 4,
+                style: const TextStyle(
                   color: kGreyColor,
                 ),
               ),

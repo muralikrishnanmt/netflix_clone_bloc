@@ -4,8 +4,14 @@ import 'package:netflix_clone_bloc/presentation/home/widgets/custom_button_widge
 import 'package:netflix_clone_bloc/presentation/widgets/video_widget.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
+  final String posterPath;
+  final String movieName;
+  final String description;
   const EveryonesWatchingWidget({
     Key? key,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -29,7 +35,9 @@ class EveryonesWatchingWidget extends StatelessWidget {
           ),
         ),
         kHeight50,
-        const VideoWidget(),
+        const VideoWidget(
+          url: newAndHotTempImage,
+        ),
         kHeight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

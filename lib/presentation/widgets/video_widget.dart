@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_bloc/core/colors.dart';
-import 'package:netflix_clone_bloc/core/constants.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String url;
   const VideoWidget({
     Key? key,
+    required this.url,
   }) : super(key: key);
 
   @override
@@ -15,7 +16,7 @@ class VideoWidget extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            newAndHotTempImage,
+            url,
             fit: BoxFit.cover,
           ),
         ),
