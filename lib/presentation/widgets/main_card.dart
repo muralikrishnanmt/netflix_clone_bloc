@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone_bloc/core/constants.dart';
 
 class MainCard extends StatelessWidget {
+  final String imageUrl;
   const MainCard({
     Key? key,
+    required this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -17,10 +19,10 @@ class MainCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: kRadius10,
         color: Colors.red,
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage(
-            'https://upload.wikimedia.org/wikipedia/en/1/19/The_Warrior%27s_Way_Poster.jpg',
+            imageUrl,
           ),
         ),
       ),
