@@ -5,8 +5,10 @@ import 'package:netflix_clone_bloc/core/constants.dart';
 
 class NumberCard extends StatelessWidget {
   final int index;
+  final String imageUrl;
   const NumberCard({
     super.key,
+    required this.imageUrl,
     required this.index,
   });
 
@@ -26,10 +28,10 @@ class NumberCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: kRadius10,
                 color: Colors.red,
-                image: const DecorationImage(
+                image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    'https://www.themoviedb.org/t/p/w220_and_h330_face/1xeiUxShzNn8TNdMqy3Hvo9o2R.jpg',
+                    imageUrl,
                   ),
                 ),
               ),

@@ -88,6 +88,16 @@ class ScreenHome extends StatelessWidget {
                     ).toList();
                     _southIndianMovies.shuffle();
 
+                    //top 10 tv shows
+                    final _top10TvShow = state.trendingTvList.map(
+                      (t) {
+                        return '$imageAppendUrl${t.posterPath}';
+                      },
+                    ).toList();
+                    _top10TvShow.shuffle();
+
+                    print(state.trendingMovieList.length);
+
                     //ListView
                     return ListView(
                       children: [
@@ -102,7 +112,9 @@ class ScreenHome extends StatelessWidget {
                           posterList: _trending,
                         ),
                         kHeight,
-                        const NumberTitleCard(),
+                        NumberTitleCard(
+                          postersList: _top10TvShow,
+                        ),
                         kHeight,
                         MainTitleCard(
                           title: 'Tense Dramas',
@@ -163,7 +175,7 @@ class ScreenHome extends StatelessWidget {
                                   style: kHomeTitleText,
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                       )

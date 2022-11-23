@@ -4,8 +4,10 @@ import 'package:netflix_clone_bloc/presentation/home/widgets/number_card.dart';
 import 'package:netflix_clone_bloc/presentation/widgets/main_title.dart';
 
 class NumberTitleCard extends StatelessWidget {
+  final List<String> postersList;
   const NumberTitleCard({
     Key? key,
+    required this.postersList,
   }) : super(key: key);
 
   @override
@@ -22,9 +24,10 @@ class NumberTitleCard extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-              10,
+              postersList.length,
               (index) => NumberCard(
                 index: index,
+                imageUrl: postersList[index],
               ),
             ),
           ),
